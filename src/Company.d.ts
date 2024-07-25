@@ -324,11 +324,6 @@ export interface CompanyProfile {
     declarationDate: string;
   }
   
-  export interface CompanyCompData {
-    symbol: string;
-    peersList: string[];
-  }
-  
   export interface CompanyTenK {
     symbol: string;
     fillingDate: string;
@@ -337,4 +332,8 @@ export interface CompanyProfile {
     type: string;
     link: string;
     finalLink: string;
+  }
+  export interface CompanyCompData{
+    symbol : string;
+    peersList : string[];
   }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CompanySearch } from "./Company";
+import { CompanyBalanceSheet, CompanyCashFlow, CompanyCompData, CompanyIncomeStatement, CompanyKeyMetrics, CompanyProfile, CompanySearch, CompanyTenK } from "./Company";
 import React from "react";
 import { env } from "process";
 
@@ -25,3 +25,73 @@ export const searchCompanies = async (query:string) => {
         }
     };
 }
+export const getCompanyProfile = async (query: string) => {
+    try {
+      const data = await axios.get<CompanyProfile[]>(
+        `https://financialmodelingprep.com/api/v3/profile/${query}?apikey=${process.env.REACT_APP_API_KEY}`
+      );
+      return data;
+    } catch (error: any) {
+      console.log("error message: ", error.message);
+    }
+  };
+export const getKeyMetrics = async (query: string) => {
+    try {
+      const data = await axios.get<CompanyKeyMetrics[]>(
+        `https://financialmodelingprep.com/api/v3/key-metrics-ttm/${query}?apikey=${process.env.REACT_APP_API_KEY}`
+      );
+      return data;
+    } catch (error: any) {
+      console.log("error message: ", error.message);
+    }
+};
+export const getIncomeStatement = async (query: string) => {
+    try {
+      const data = await axios.get<CompanyIncomeStatement[]>(
+        `https://financialmodelingprep.com/api/v3/Income-Statement/${query}?apikey=${process.env.REACT_APP_API_KEY}`
+      );
+      return data;
+    } catch (error: any) {
+      console.log("error message: ", error.message);
+    }
+  };
+  export const getBalanceSheet = async (query: string) => {
+    try {
+      const data = await axios.get<CompanyBalanceSheet[]>(
+        `https://financialmodelingprep.com/api/v3/balance-sheet-statement/${query}?apikey=${process.env.REACT_APP_API_KEY}`
+      );
+      return data;
+    } catch (error: any) {
+      console.log("error message: ", error.message);
+    }
+  };
+  export const getCashflowStatement = async (query: string) => {
+    try {
+      const data = await axios.get<CompanyCashFlow[]>(
+        `https://financialmodelingprep.com/api/v3/cash-flow-statement/${query}?limit=100&apikey=${process.env.REACT_APP_API_KEY}`
+      );
+      return data;
+    } catch (error: any) {
+      console.log("error message: ", error.message);
+    }
+  };
+  export const getCompData = async (query: string) => {
+    try {
+      const data = await axios.get<CompanyCompData[]>(
+        `https://financialmodelingprep.com/api/v4/stock_peers/symbol=${query}&apikey=${process.env.REACT_APP_API_KEY}`
+      );
+      return data;
+    } catch (error: any) {
+      console.log("error message: ", error.message);
+    }
+  };
+  export const getTenkFinder = async (query: string) => {
+    try {
+      const data = await axios.get<CompanyTenK[]>(
+        `https://financialmodelingprep.com/api/v3/sec_filings/${query}?type=10-k&page=0&apikey=${process.env.REACT_APP_API_KEY}`
+      );
+      return data;
+    } catch (error: any) {
+      console.log("error message: ", error.message);
+    }
+  };
